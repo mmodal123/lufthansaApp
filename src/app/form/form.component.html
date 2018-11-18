@@ -1,0 +1,56 @@
+<mat-card>
+  <!-- Title of an Card -->
+  <mat-card-title>
+    Flight Schedules Request Form
+  </mat-card-title>
+
+  <mat-card-content>
+    <form #scheduleForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+      <hr />
+      
+      <table>
+        <tr>
+          <td>
+            <mat-form-field class="demo-full-width" class="form-group">
+              <input required matInput #input maxlength="3" name="destination" placeholder="Enter destination" class="form-control"
+                [(ngModel)]="flightSchedule.destination">
+              <mat-hint align="end">Destination airport. 3-letter IATA airport code (e.g. 'FRA') {{input.value?.length
+                || 0}}/3</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="demo-full-width" class="form-group">
+              <input required matInput #input maxlength="3" name="origin" placeholder="Enter origin" class="form-control"
+                [(ngModel)]="flightSchedule.origin">
+              <mat-hint align="end">Origin airport. 3-letter IATA airport code (e.g. 'FRA'){{input.value?.length ||
+                0}}/3</mat-hint>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field style="margin-top: 20px" class="demo-full-width" class="form-group">
+              <input required matInput [matDatepicker]="picker" name="date" placeholder="Date" class="form-control" [(ngModel)]="flightSchedule.date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker touchUi="true" #picker></mat-datepicker>
+            </mat-form-field>
+          </td>
+          <td colspan="2">
+            <mat-form-field style="margin-top: 20px" class="demo-full-width" class="form-group">
+              <input required matInput #input maxlength="3" name="limit" placeholder="Max Limit(100)" class="form-control"
+                [(ngModel)]="flightSchedule.limit">
+              <mat-hint align="end">Number of records returned per request</mat-hint>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="content-center">
+            <button [disabled]="scheduleForm.form.invalid" type="submit" style="margin-right: 10%" mat-raised-button>Submit</button>
+            <button mat-raised-button (click)="clear()">Clear</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+</mat-card>

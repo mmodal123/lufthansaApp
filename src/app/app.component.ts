@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LufthansaDataService } from './lufthansa-data.service';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +8,10 @@ import { LufthansaDataService } from './lufthansa-data.service';
 export class AppComponent implements OnInit {
   title = 'lufthansaApp';
 
-  constructor(private dataService: LufthansaDataService) {
+  constructor() {
   }
 
   ngOnInit() {
-
-    this.dataService.getInformation().subscribe(data => console.log(data));
 
   }
 }
